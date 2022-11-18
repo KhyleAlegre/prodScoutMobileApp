@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+    <div class="profileImageContainer">
+      <br />
+      <br />
+      <img alt="logo" [src]="logProfileUrl" class="profileImage" />
+      <br />
+      <sup
+        >To change your Profile Image please access our mobile / desktop
+        site</sup
+      >
+      <br />
+    </div>
+    <div class="profileContainer">
+      <h2>{{firstName}} {{lastName}}</h2>
+      <br />
+      <br />
+      <h2 style="font-weight: bold">My Profile</h2>
+      <ion-label>My User Id</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="text"
+        disabled
+        [(ngModel)]="username"
+      ></ion-input>
+      <br />
+      <ion-label>First Name</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="text"
+        [(ngModel)]="firstName"
+      ></ion-input>
+      <br />
+      <ion-label>Last Name</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="text"
+        [(ngModel)]="lastName"
+      ></ion-input>
+      <br />
+      <ion-label>Email</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="email"
+        [(ngModel)]="email"
+      ></ion-input>
+      <br />
+      <ion-label>Contact No</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="text"
+        [(ngModel)]="contactNo"
+      ></ion-input>
+      <br />
+      <ion-button color="primary" expand="block" (click)="updateProfile()">
+        Update Profile
+      </ion-button>
+      <br />
+      <br />
+      <h4 style="font-weight: bold">Change Password</h4>
+      <br />
+      <ion-label>Enter New Password</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="password"
+        [(ngModel)]="password"
+      ></ion-input>
+      <br />
+      <ion-button color="primary" expand="block" (click)="updatePassword()">
+        Update Password
+      </ion-button>
+      <br />
+      <ion-button
+        color="primary"
+        fill="outline"
+        expand="block"
+        (click)="returnDb()"
+      >
+        Back
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

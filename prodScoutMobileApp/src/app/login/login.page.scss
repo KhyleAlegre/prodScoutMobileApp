@@ -1,0 +1,25 @@
+ion-content {
+  --background: url("/assets/header.jpg") no-repeat;
+  .mainContainer {
+    margin-top: 80px;
+  }
+  .inputContainer {
+    .inputSection {
+      margin: 10px;
+      .lgInput {
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        border: solid 1px;
+        margin: 2px;
+        border-radius: 3px;
+        width: 95;
+      }
+    }
+  }
+
+  .footerContainer {
+    text-align: center;
+    font-weight: bold;
+  }
+}

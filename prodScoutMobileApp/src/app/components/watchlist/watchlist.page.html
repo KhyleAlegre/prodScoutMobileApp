@@ -1,0 +1,67 @@
+<ion-content>
+  <div class="main" style="margin: 10px; border: solid 1px #e1e1e1">
+    <div class="containerHeader" style="text-align: center">
+      <ion-label style="font-size: 20px; margin-top: 5px; font-weight: bold">
+        Manage Watchlist Sites
+      </ion-label>
+      <br />
+      <br />
+      <br />
+      <ion-label>Application Name</ion-label>
+      <ion-input
+        style="border: solid 1px #e1e1e1; margin: 5px; width: 97%"
+        type="text"
+        [(ngModel)]="exeName"
+      ></ion-input>
+      <br />
+      <ion-select
+        style="border: solid 1px #e1e1e1; margin: 5px"
+        interface="popover"
+        [(ngModel)]="category"
+      >
+        <ion-select-option value="Web Browser"> Web Browser </ion-select-option>
+        <ion-select-option value="Office Productivity">
+          Office Productivity
+        </ion-select-option>
+        <ion-select-option value="Games"> Games </ion-select-option>
+        <ion-select-option value="Entertainment">
+          Entertainment
+        </ion-select-option>
+      </ion-select>
+      <br />
+      <ion-button color="primary" expand="block" (click)="addExe()">
+        Add
+      </ion-button>
+    </div>
+    <ion-button
+      color="primary"
+      fill="outline"
+      expand="block"
+      (click)="returnDb()"
+    >
+      Back
+    </ion-button>
+    <div class="siteContainer">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4"><b>Category</b></ion-col>
+          <ion-col size="6"><b>Application Name</b></ion-col>
+          <ion-col size="2"><b>Actions</b></ion-col>
+        </ion-row>
+        <ion-row *ngFor="let list of watchList">
+          <ion-col size="4">{{list.category}}</ion-col>
+          <ion-col size="6">{{list.applicationName}}</ion-col>
+          <ion-col size="2"
+            ><ion-button
+              color="danger"
+              expand="block"
+              (click)="removeExe(list)"
+            >
+              X
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

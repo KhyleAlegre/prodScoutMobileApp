@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profiles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main">
+    <ion-label style="font-weight: bold; margin: 5px">
+      Select a Profile
+    </ion-label>
+    <br />
+    <ion-select
+      style="border: solid 1px #e1e1e1; margin: 5px"
+      interface="popover"
+      [(ngModel)]="selectedProfile"
+      (ionChange)="getProfile()"
+    >
+      <ion-select-option
+        *ngFor="let profile of profileList"
+        value="{{profile.profileId}}"
+        >{{profile.firstName}} {{profile.lastName}}</ion-select-option
+      >
+    </ion-select>
+
+    <div class="profileContainer">
+      <ion-label>Profile Id</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="text"
+        [(ngModel)]="profileId"
+      ></ion-input>
+      <br />
+      <ion-label>First Name</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="text"
+        [(ngModel)]="firstName"
+      ></ion-input>
+      <br />
+      <ion-label>Last Name</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="text"
+        [(ngModel)]="lastName"
+      ></ion-input>
+      <br />
+      <ion-label>Password</ion-label>
+      <ion-input
+        class="input-form-standard"
+        type="pasword"
+        [(ngModel)]="password"
+      ></ion-input>
+      <br />
+      <br />
+      <ion-button color="primary" expand="block" (click)="updateAccount()">
+        Update
+      </ion-button>
+
+      <hr />
+
+      <ion-label> Please select an avatar</ion-label>
+      <div
+        class="avatarContainer"
+        style="display: flex; justify-content: space-evenly"
+      >
+        <div
+          style="border: solid 1px #e1e1e1; margin: 5px; padding: 5px"
+          id="maleDiv"
+        >
+          <span>
+            <img
+              [src]="avBoy"
+              style="
+                height: 5rem;
+                width: 5rem;
+                border-radius: 30px;
+                padding: 5px;
+              "
+            />
+            <ion-button
+              color="secondary"
+              expand="block"
+              (click)="selectAvBoy()"
+            >
+              Benny
+            </ion-button>
+          </span>
+        </div>
+
+        <div
+          style="border: solid 1px #e1e1e1; margin: 5px; padding: 5px"
+          id="femaleDiv"
+        >
+          <span>
+            <img
+              [src]="avGirl"
+              style="
+                height: 5rem;
+                width: 5rem;
+                border-radius: 30px;
+                padding: 5px;
+              "
+            />
+            <ion-button color="warning" expand="block" (click)="selectAvGirl()">
+              Laura
+            </ion-button>
+          </span>
+        </div>
+      </div>
+
+      <ion-button color="primary" expand="block" (click)="AddAccount()">
+        Add
+      </ion-button>
+
+      <ion-button color="danger" expand="block" (click)="deleteAccount()">
+        Delete
+      </ion-button>
+
+      <ion-button
+        color="primary"
+        fill="outline"
+        expand="block"
+        (click)="returnDb()"
+      >
+        Back
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

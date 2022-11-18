@@ -1,0 +1,117 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title> {{logFirstName}} {{logLastName}} </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="profileContainer">
+      <div class="imageContainer">
+        <img alt="profileImagealt" [src]="logProfileUrl" class="profileImage" />
+        <span style="margin-left: 10px; font-size: 14px">
+          <b>Username:</b> {{logUserName}}
+          <br />
+          <b> Email:</b> {{logEmail}}
+        </span>
+      </div>
+      <br />
+      <div class="buttonContainer">
+        <ion-item (click)="openMyProfile()"> My Account </ion-item>
+        <ion-item (click)="openManageProfiles()"> Manage Profiles</ion-item>
+        <ion-item (click)="openBlackList()"> Manage Blacklist</ion-item>
+        <ion-item (click)="openWatchList()"> Manage Watchlist</ion-item>
+        <br />
+        <br />
+        <br />
+        <ion-item (click)="logOut()">
+          <ion-icon name="exit-outline"></ion-icon>
+          <ion-label>Exit</ion-label>
+        </ion-item>
+      </div>
+    </div>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Hello! {{logFirstName}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <div class="main">
+      <div class="dashtools">
+        <ion-button fill="clear" (click)="getScreenshot()">
+          <span style="display: flex; align-items: center; flex-wrap: flex">
+            <ion-icon name="browsers-outline"></ion-icon>
+            Screenshot
+          </span>
+        </ion-button>
+        <ion-button fill="clear" (click)="sendNudge()">
+          <span style="display: flex; align-items: center; flex-wrap: flex">
+            <ion-icon name="rocket-outline"></ion-icon>
+            Nudge
+          </span>
+        </ion-button>
+        <ion-button fill="clear" (click)="enableStrict()">
+          <span style="display: flex; align-items: center; flex-wrap: flex">
+            <ion-icon name="ribbon-outline"></ion-icon>
+            Strict Mode
+          </span>
+        </ion-button>
+        <ion-button fill="clear" (click)="enableHoliday()">
+          <span style="display: flex; align-items: center; flex-wrap: flex">
+            <ion-icon name="train-outline"></ion-icon>
+            Holiday Mode
+          </span>
+        </ion-button>
+      </div>
+      <br />
+      <div
+        class="profileSelect"
+        style="border: solid 1px #e1e1e1; border-radius: 4px"
+      >
+        <ion-label style="font-weight: bold; margin: 5px">
+          Select a Profile
+        </ion-label>
+        <br />
+        <ion-select
+          style="border: solid 1px #e1e1e1; margin: 5px"
+          interface="popover"
+          [(ngModel)]="profileId"
+          (ionChange)="getProfile()"
+        >
+          <ion-select-option
+            *ngFor="let profile of profileList"
+            value="{{profile.profileId}}"
+            >{{profile.firstName}} {{profile.lastName}}</ion-select-option
+          >
+        </ion-select>
+      </div>
+      <div class="displaySessions">
+        <ion-card *ngFor="let events of eventList">
+          <img [src]="events.photoUrl" (click)="viewImage(events.photoUrl)" />
+          <ion-card-header>
+            <ion-card-subtitle
+              >Captured Event - {{events.deviceType}} - (Tap Image to
+              View)</ion-card-subtitle
+            >
+          </ion-card-header>
+
+          <ion-card-content>
+            <p><b>Logged Activity</b> : {{ events.sessionMode }}</p>
+            <p>
+              <b>Activity Violation</b>: {{ events.violationLevel || "None" }}
+            </p>
+            <p>
+              <b>Activity Timestamp</b>: {{ events.displaySessionDate }} - {{
+              events.displaySessionTime }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </ion-content>
+</div>

@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="true">
+  <div class="main" style="margin: 5px; border: solid 1px #e1e1e1">
+    <div class="containerHeader" style="text-align: center">
+      <ion-label style="font-size: 24px; font-weight: bold">Logs</ion-label>
+    </div>
+
+    <div class="profileContainer" style="text-align: center">
+      <ion-label style="font-weight: bold; margin: 5px">
+        Select a Profile
+      </ion-label>
+      <br />
+      <ion-select
+        style="border: solid 1px #e1e1e1; margin: 5px"
+        interface="popover"
+        [(ngModel)]="selectedProfile"
+        (ionChange)="getLogs()"
+      >
+        <ion-select-option
+          *ngFor="let profile of profileList"
+          value="{{profile.profileId}}"
+          >{{profile.firstName}} {{profile.lastName}}</ion-select-option
+        >
+      </ion-select>
+    </div>
+
+    <div class="searchContainer">
+      <ion-input
+        type="text"
+        class="input-form-standard"
+        placeholder="Search..."
+        [(ngModel)]="filterValue"
+      ></ion-input>
+    </div>
+
+    <div class="logContainer">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4"><b>Log Date</b></ion-col>
+          <ion-col size="8"><b>Activity</b></ion-col>
+        </ion-row>
+        <ion-row *ngFor="let logs of eventList | filter: filterValue">
+          <ion-col size="4"
+            >{{ logs.logDate.toDate() | date: "yyyy/MM/dd h:mm:ss a" }}</ion-col
+          >
+          <ion-col size="8" style="overflow: hidden; text-overflow: ellipsis">
+            {{ logs.eventDetails }}</ion-col
+          >
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

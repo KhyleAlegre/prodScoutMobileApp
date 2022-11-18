@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="mainContainer">
+    <div class="inputContainer">
+      <ion-card>
+        <img alt="Silhouette of mountains" src="../../assets/loginImage.png" />
+        <ion-card-header style="text-align: center">
+          <img alt="Silhouette of mountains" src="../../assets/icon/ps48.png" />
+          <ion-card-title> prodScout </ion-card-title>
+        </ion-card-header>
+        <br />
+
+        <div class="inputSection">
+          <ion-card-title> Welcome Back!</ion-card-title>
+          <br />
+          <ion-input
+            class="lgInput"
+            placeholder="Enter your Email"
+            [(ngModel)]="email"
+          ></ion-input>
+          <br />
+          <ion-input
+            type="password"
+            class="lgInput"
+            placeholder="Enter your Password"
+            [(ngModel)]="password"
+          ></ion-input>
+          <br />
+          <ion-button color="primary" expand="block" (click)="login()">
+            Login
+          </ion-button>
+          <br />
+          <br />
+          <ion-label style="float: right; cursor: pointer" (click)="redirect()"
+            >Register or Forgot Your Password?</ion-label
+          >
+          <br />
+        </div>
+      </ion-card>
+    </div>
+
+    <div class="footerContainer">2022-prodScout for Mobile</div>
+  </div>
+</ion-content>

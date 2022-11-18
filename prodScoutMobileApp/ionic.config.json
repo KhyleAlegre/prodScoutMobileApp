@@ -1,0 +1,7 @@
+{
+  "name": "iGuard",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

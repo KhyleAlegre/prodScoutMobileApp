@@ -1,0 +1,45 @@
+<ion-content [fullscreen]="true">
+  <div class="main" style="margin: 5px; border: solid 1px #e1e1e1">
+    <div class="containerHeader" style="text-align: center">
+      <ion-label style="font-size: 24px; font-weight: bold">Gallery</ion-label>
+    </div>
+
+    <div class="profileContainer" style="text-align: center">
+      <ion-label style="font-weight: bold; margin: 5px">
+        Select a Profile
+      </ion-label>
+      <br />
+      <ion-select
+        style="border: solid 1px #e1e1e1; margin: 5px"
+        interface="popover"
+        [(ngModel)]="selectedProfile"
+        (ionChange)="getGallery()"
+      >
+        <ion-select-option
+          *ngFor="let profile of profileList"
+          value="{{profile.profileId}}"
+          >{{profile.firstName}} {{profile.lastName}}</ion-select-option
+        >
+      </ion-select>
+    </div>
+
+    <div
+      class="galleryContainer"
+      *ngFor="let gallery of galleryList"
+      style="text-align: center"
+    >
+      <div
+        class="imageContainer"
+        style="margin: 5px; padding: 5px; border: solid 2px #e1e1e1"
+        (click)="loadViewer(gallery.ssUrl)"
+      >
+        <img [src]="gallery.ssUrl" alt="Image" width="340" height="200" />
+        <br />
+        <ion-label
+          >{{ gallery.logDate.toDate() | date: "yyyy/MM/dd h:mm:ss a"
+          }}</ion-label
+        >
+      </div>
+    </div>
+  </div>
+</ion-content>

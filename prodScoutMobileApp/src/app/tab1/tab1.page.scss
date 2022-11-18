@@ -1,0 +1,16 @@
+.profileContainer {
+  .imageContainer {
+    display: flex;
+    align-items: center;
+
+    .profileImage {
+      height: 20%;
+      width: 20%;
+    }
+  }
+}
+.main {
+  .dashtools {
+    border: solid 1px #e1e1e1;
+  }
+}
